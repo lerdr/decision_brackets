@@ -1,18 +1,12 @@
-/*
-Palette 
-
-...
-2 #FFEE93 Yellow Crayola
-...
-...
-5 #ADF7B6 Granny Smith Apple
-*/
+/* VARS */
 
 :root {
   --bg-color: #ffc09f;
+  --bg-text-color: #605800;
+
   --card-color: #fcf5c7;
-  --text-large-color: #67939e;
-  --text-small-color: #49757f;
+  --card-text-large-color: #67939e;
+  --card-text-small-color: #49757f;
 
   --btn-bg-color: #adf7b6;
   --btn-text-color: #70680f;
@@ -24,11 +18,11 @@ h3,
 h4,
 h5,
 h6 {
-  color: var(--text-large-color);
+  color: var(--card-text-large-color);
 }
 
 p {
-  color: var(--text-small-color);
+  color: var(--card-text-small-color);
   font-size: 1.6rem;
 }
 
@@ -42,18 +36,23 @@ body {
   font-family: "Hubballi", sans-serif;
 }
 
+/* CARD */
+
 .card-container {
+  z-index: 2;
   background-color: var(--card-color);
   border-radius: 10px;
   padding: 20px;
   max-width: 600px;
   min-width: 200px;
+
+  transition: 0.4s;
 }
 
 .card-container h2 {
   font-size: 2.2rem;
   padding-bottom: 10px;
-  border-bottom: solid 1px var(--text-large-color);
+  border-bottom: solid 1px var(--card-text-large-color);
 }
 
 .buttons-row {
@@ -82,4 +81,18 @@ body {
   color: var(--btn-bg-color);
 
   cursor: pointer;
+}
+
+/* BACKGROUND */
+
+.bg-content {
+  z-index: 1;
+  position: absolute;
+  top: 10vh;
+
+  color: var(--bg-text-color);
+}
+
+.bg-content li {
+  font-size: 1.2rem;
 }
