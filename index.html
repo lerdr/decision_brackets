@@ -14,17 +14,24 @@
     />
 
     <title>Decision Brackets</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>🏆</text></svg>">
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>🏆</text></svg>"
+    />
   </head>
   <body>
-
     <div class="bg-content">
-        <ul id="bg-list">
-        </ul>
+      <ul id="bg-list"></ul>
     </div>
 
     <div class="card-container">
-      <h2 id="card-title">Title</h1>
+      <input
+        id="card-title"
+        type="text"
+        maxlength="35"
+        placeholder="Enter Title"
+        autofocus
+      />
       <p id="card-description">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis,
         facere repudiandae error omnis voluptatibus nobis? Repellat itaque
@@ -32,8 +39,12 @@
         iste nulla corporis! Excepturi, dolorum!
       </p>
       <div class="buttons-row">
-          <button id="btn-1" data-function="append">Button 1</button>
-          <button id="btn-2" data-function="reset">Button 2</button>
+        <button id="btn-1" data-function="append">
+          Create & Add Another <br /><span class="key-tooltip">ENTER</span>
+        </button>
+        <button id="btn-2" data-function="reset">
+          Create & Compare <br /><span class="key-tooltip">SHIFT + ENTER</span>
+        </button>
       </div>
     </div>
 

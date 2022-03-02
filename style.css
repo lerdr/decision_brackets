@@ -49,12 +49,6 @@ body {
   transition: 0.4s;
 }
 
-.card-container h2 {
-  font-size: 2.2rem;
-  padding-bottom: 10px;
-  border-bottom: solid 1px var(--card-text-large-color);
-}
-
 .buttons-row {
   display: flex;
   align-items: center;
@@ -62,6 +56,7 @@ body {
 }
 
 .buttons-row button {
+  width: 250px;
   margin: 0px 10px;
   padding: 10px;
   border: none;
@@ -76,11 +71,32 @@ body {
   transition: 0.4s;
 }
 
-.buttons-row button:hover {
+.buttons-row button:hover,
+.buttons-row button:focus {
   background-color: var(--btn-text-color);
   color: var(--btn-bg-color);
 
   cursor: pointer;
+  outline: none;
+}
+
+#card-title {
+  width: 100%;
+  padding-bottom: 10px;
+
+  background-color: transparent;
+  outline: none;
+  border: none;
+  border-bottom: solid 1px var(--card-text-large-color);
+
+  font-family: "Hubballi", sans-serif;
+  color: var(--card-text-large-color);
+  font-weight: 400;
+  font-size: 2.2rem;
+}
+
+.key-tooltip {
+  font-size: 0.7rem;
 }
 
 /* BACKGROUND */
