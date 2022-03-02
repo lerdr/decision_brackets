@@ -12,20 +12,6 @@
   --btn-text-color: #70680f;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: var(--card-text-large-color);
-}
-
-p {
-  color: var(--card-text-small-color);
-  font-size: 1.6rem;
-}
-
 body {
   background-color: var(--bg-color);
   height: 100vh;
@@ -93,6 +79,21 @@ body {
   color: var(--card-text-large-color);
   font-weight: 400;
   font-size: 2.2rem;
+}
+
+#card-description {
+  width: 100%;
+  margin: 20px 0px;
+  resize: none;
+
+  background-color: transparent;
+  outline: none;
+  border: none;
+
+  font-family: "Hubballi", sans-serif;
+  color: var(--card-text-small-color);
+  font-weight: 400;
+  font-size: 1.6rem;
 }
 
 .key-tooltip {

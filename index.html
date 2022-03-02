@@ -30,19 +30,21 @@
         type="text"
         maxlength="35"
         placeholder="Enter Title"
+        tabindex="1"
         autofocus
       />
-      <p id="card-description">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis,
-        facere repudiandae error omnis voluptatibus nobis? Repellat itaque
-        temporibus tempora nihil commodi quis praesentium quaerat, accusantium
-        iste nulla corporis! Excepturi, dolorum!
-      </p>
+      <textarea
+        id="card-description"
+        maxlength="500"
+        placeholder="Enter Description"
+        rows="5"
+        tabindex="2"
+      ></textarea>
       <div class="buttons-row">
-        <button id="btn-1" data-function="append">
+        <button id="btn-1" data-function="append" tabindex="3">
           Create & Add Another <br /><span class="key-tooltip">ENTER</span>
         </button>
-        <button id="btn-2" data-function="reset">
+        <button id="btn-2" data-function="reset" tabindex="4">
           Create & Compare <br /><span class="key-tooltip">SHIFT + ENTER</span>
         </button>
       </div>
