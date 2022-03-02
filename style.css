@@ -13,6 +13,9 @@ Palette
   --card-color: #fcf5c7;
   --text-large-color: #67939e;
   --text-small-color: #49757f;
+
+  --btn-bg-color: #adf7b6;
+  --btn-text-color: #70680f;
 }
 
 h1,
@@ -36,7 +39,7 @@ body {
   display: grid;
   place-items: center;
 
-  font-family: "Hubballi", cursive;
+  font-family: "Hubballi", sans-serif;
 }
 
 .card-container {
@@ -53,8 +56,30 @@ body {
   border-bottom: solid 1px var(--text-large-color);
 }
 
-.button-row {
+.buttons-row {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttons-row button {
+  margin: 0px 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+
+  background-color: var(--btn-bg-color);
+  color: var(--btn-text-color);
+
+  font-family: "Hubballi", sans-serif;
+  font-size: 1.4rem;
+
+  transition: 0.4s;
+}
+
+.buttons-row button:hover {
+  background-color: var(--btn-text-color);
+  color: var(--btn-bg-color);
+
+  cursor: pointer;
 }
