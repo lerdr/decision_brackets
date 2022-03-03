@@ -1,3 +1,5 @@
+let mode = "";
+
 const items = [];
 const comparisons = [];
 
@@ -23,27 +25,44 @@ const btnPromoteRight = document.getElementById("btn-right");
 
 const bgList = document.getElementById("bg-list");
 
+// Shortcuts
 const keys = {};
 onkeydown = onkeyup = function (key) {
   keys[key.key] = key.type == "keydown";
 
-  // IF MODE: CREATION
+  switch (mode) {
+    case "add":
+      // Create & Add Another
+      if (keys["Enter"] && !keys["Shift"]) appendItem();
 
-  // Create & Add Another
-  if (keys["Enter"] && !keys["Shift"]) appendItem();
+      // Create & Compare
+      if (keys["Enter"] && keys["Shift"] && !btnCreateCompare.disabled) {
+        appendItem();
+        compareItems();
+      }
+      break;
+    case "comparison":
+      // Promote Left
+      if (keys["ArrowLeft"]) promoteItem(btnPromoteLeft.dataset.itemCode);
 
-  // Create & Compare
-  if (keys["Enter"] && keys["Shift"] && !btnCreateCompare.disabled) {
-    appendItem();
-    compareItems();
+      // Promote Right
+      if (keys["ArrowRight"]) promoteItem(btnPromoteRight.dataset.itemCode);
+      break;
+    case "winner":
+      break;
+    default:
+      this.alert("Error: no mode detected");
+      break;
   }
-
-  // IF MODE: COMPARISON
-
-  // Promote Left
-
-  // Promote Right
 };
+
+function init() {
+  btnCreateAnother.addEventListener("click", btnClick);
+  btnCreateCompare.addEventListener("click", btnClick);
+  btnPromoteLeft.addEventListener("click", btnClick);
+  btnPromoteRight.addEventListener("click", btnClick);
+  mode = "add";
+}
 
 function btnClick() {
   switch (this.dataset.function) {
@@ -101,8 +120,9 @@ function drawList() {
 }
 
 function compareItems() {
+  mode = "comparison";
   hideCard();
-  generatePairings();
+  generatePairings(items);
   drawComparisonCard();
 }
 
@@ -110,7 +130,7 @@ function hideCard() {
   itemCard.style.display = "none";
 }
 
-function generatePairings() {
+function generatePairings(items) {
   comparisons.splice(0, comparisons.length);
 
   const shuffledItems = knuthShuffle(items);
@@ -200,7 +220,7 @@ function drawComparisonCard() {
 
   // if none found, we reached the end
   if (index >= comparisons.length) {
-    comparisonCard.style.display = "none";
+    nextTier();
     return;
   }
 
@@ -233,7 +253,21 @@ function promoteItem(itemCode) {
   drawComparisonCard();
 }
 
-btnCreateAnother.addEventListener("click", btnClick);
-btnCreateCompare.addEventListener("click", btnClick);
-btnPromoteLeft.addEventListener("click", btnClick);
-btnPromoteRight.addEventListener("click", btnClick);
+function nextTier() {
+  const nextTierItems = comparisons.map((pair) =>
+    pair[0].winner
+      ? { title: pair[0].title, description: pair[0].description }
+      : { title: pair[1].title, description: pair[1].description }
+  );
+
+  if (nextTierItems.length > 1) {
+    generatePairings(nextTierItems);
+    drawComparisonCard();
+  } else {
+    comparisonCard.style.display = "none";
+    mode = "winner";
+    bgList.innerHTML = `<li><strong>${nextTierItems[0].title}</strong><br />${nextTierItems[0].description}</li>`;
+  }
+}
+
+init();
