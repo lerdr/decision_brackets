@@ -9,6 +9,7 @@
   --card-text-small-color: #49757f;
 
   --btn-bg-color: #adf7b6;
+  --btn-disabled-bg-color: #ededed;
   --btn-text-color: #70680f;
 }
 
@@ -57,11 +58,6 @@ body {
   transition: 0.4s;
 }
 
-.buttons-row button:disabled {
-  background-color: lightgray;
-  color: var(--btn-text-color);
-}
-
 .buttons-row button:hover,
 .buttons-row button:focus {
   background-color: var(--btn-text-color);
@@ -69,6 +65,13 @@ body {
 
   cursor: pointer;
   outline: none;
+}
+
+.buttons-row button:disabled {
+  background-color: var(--btn-disabled-bg-color);
+  color: var(--btn-text-color);
+
+  cursor: default;
 }
 
 #card-title {

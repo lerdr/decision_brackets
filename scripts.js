@@ -11,9 +11,10 @@
 // draw whole background from array, not just append ✔️
 // shift + enter should hide the card ✔️
 // shift + enter should be enabled when there are 2+ elements, not before ✔️
-// shift + enter should be meaningfully styled 💬
+// shift + enter should be meaningfully styled ✔️
+// after the card is hidden, the software should automatically generate pairings ✔️
+// background elements should be drawn from array with objects 💬
 
-// after the card is hidden, the software should automatically generate pairings 🔜
 // new empty card should appear - call it comparison-card 🔜
 // comparison-card should show two columns & two buttons 🔜
 // the two columns should include title & description from selected comparison items 🔜
@@ -104,11 +105,51 @@ function drawList() {
 function compareItems() {
   hideCard();
 
-  console.log("- compareItems: awaiting implementation...");
+  generatePairings();
 }
 
 function hideCard() {
   itemCard.style.display = "none";
+}
+
+function generatePairings() {
+  bgList.innerHTML = "";
+  const shuffledItems = knuthShuffle(items);
+
+  while (shuffledItems.length > 0) {
+    let currentItem = shuffledItems.pop();
+    let currentString = `<li><strong>${currentItem.title}</strong>`;
+
+    if (currentItem.description)
+      currentString += ` (${currentItem.description})`;
+
+    if (shuffledItems.length > 0) {
+      let nextItem = shuffledItems.pop();
+      currentString += ` vs. <strong>${nextItem.title}</strong>`;
+
+      if (nextItem.description) currentString += ` (${nextItem.description})`;
+    }
+
+    currentString += "</li>";
+    bgList.innerHTML += currentString;
+  }
+}
+
+function knuthShuffle(array) {
+  let currentIndex = array.length;
+  let randomIndex;
+
+  while (currentIndex != 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
+  }
+
+  return array;
 }
 
 btn1.addEventListener("click", btnClick);
