@@ -57,6 +57,11 @@ body {
   transition: 0.4s;
 }
 
+.buttons-row button:disabled {
+  background-color: lightgray;
+  color: var(--btn-text-color);
+}
+
 .buttons-row button:hover,
 .buttons-row button:focus {
   background-color: var(--btn-text-color);
