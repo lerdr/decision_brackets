@@ -26,7 +26,8 @@
 
     <div class="card-container" id="add-item-card">
       <input
-        id="card-title"
+        class="card-title"
+        id="add-card-title"
         type="text"
         maxlength="35"
         placeholder="Enter Title"
@@ -34,18 +35,59 @@
         autofocus
       />
       <textarea
-        id="card-description"
+        class="card-description"
+        id="add-card-description"
         maxlength="500"
         placeholder="Enter Description"
         rows="5"
         tabindex="2"
       ></textarea>
       <div class="buttons-row">
-        <button id="btn-1" data-function="append" tabindex="3">
+        <button id="btn-create-another" data-function="append" tabindex="3">
           Create & Add Another <br /><span class="key-tooltip">ENTER</span>
         </button>
-        <button id="btn-2" data-function="compare" tabindex="4" disabled>
+        <button
+          id="btn-create-compare"
+          data-function="compare"
+          tabindex="4"
+          disabled
+        >
           Create & Compare <br /><span class="key-tooltip">SHIFT + ENTER</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="card-container" id="comparison-card">
+      <div class="comparison-row">
+        <div class="column" id="comparison-left-column">
+          <h2 class="card-title" id="comparison-left-title">Card Title</h2>
+          <p class="card-description" id="comparison-left-description">
+            Card Description
+          </p>
+        </div>
+        <div class="column" id="comparison-right-column">
+          <h2 class="card-title" id="comparison-right-title">Card Title</h2>
+          <p class="card-description" id="comparison-right-description">
+            Card Description
+          </p>
+        </div>
+      </div>
+      <div class="buttons-row">
+        <button
+          id="btn-left"
+          data-function="promote"
+          data-itemCode=""
+          tabindex="1"
+        >
+          Promote Alternative <br /><span class="key-tooltip">←</span>
+        </button>
+        <button
+          id="btn-right"
+          data-function="promote"
+          data-itemCode=""
+          tabindex="2"
+        >
+          Promote Alternative <br /><span class="key-tooltip">→</span>
         </button>
       </div>
     </div>

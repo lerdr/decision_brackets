@@ -23,15 +23,14 @@ body {
   font-family: "Hubballi", sans-serif;
 }
 
-/* CARD */
+/* CARDS */
 
 .card-container {
   z-index: 2;
   background-color: var(--card-color);
   border-radius: 10px;
   padding: 20px;
-  max-width: 600px;
-  min-width: 200px;
+  width: 640px;
 
   transition: 0.4s;
 }
@@ -43,7 +42,7 @@ body {
 }
 
 .buttons-row button {
-  width: 250px;
+  width: 100%;
   margin: 0px 10px;
   padding: 10px;
   border: none;
@@ -74,8 +73,9 @@ body {
   cursor: default;
 }
 
-#card-title {
+.card-title {
   width: 100%;
+  margin: 20px 0px;
   padding-bottom: 10px;
 
   background-color: transparent;
@@ -89,7 +89,7 @@ body {
   font-size: 2.2rem;
 }
 
-#card-description {
+.card-description {
   width: 100%;
   margin: 20px 0px;
   resize: none;
@@ -106,6 +106,21 @@ body {
 
 .key-tooltip {
   font-size: 0.7rem;
+}
+
+#comparison-card {
+  display: none;
+}
+
+.comparison-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.comparison-row .column {
+  width: 100%;
+  padding: 0px 10px;
 }
 
 /* BACKGROUND */

@@ -18,17 +18,21 @@
 - after the card is hidden, the software should automatically generate pairings ✔️
 - fix: create & compare skips to compare, does not create! ✔️
 - background elements should be drawn from array with objects ✔️
+- new empty card should appear - call it comparison-card ✔️
+- comparison-card should show two columns & two buttons ✔️
+- the two columns should include title & description from selected comparison items ✔️
+- buttons should tell which one to promote ✔️
+- drawComparisonCard should set title, description, code of earliest non-judged ✔️
+- selecting one option should cross the item out of the list and present the next ✔️
 
 ## Doing
 
-- new empty card should appear - call it comparison-card 🔜
+- buttons should be triggered either by clicking or pressing the arrows 🔜
 
 ## Up Next
 
-- comparison-card should show two columns & two buttons 🔜
-- the two columns should include title & description from selected comparison items 🔜
-- buttons should tell which one to promote 🔜
-- buttons should be triggered either by clicking or pressing the arrows 🔜
+- when all comparisons are done, a new tier should be generated with survivors 🔜
+- when only one item remains, that item should be clearly denoted as winner 🔜
 - software should have a mode enum that limits keyboard interactivity 🔜
 - I should be able to enter extra items after the comparison has begun 🔜
 - new elements should be appendended in a new list, separate from comparisons 🔜
@@ -39,5 +43,6 @@
 
 ## Bugs
 
+- fix: clicking on element leaves element :hover 🐛
 - fix: empty title - tab to description - write - enter: no trigger 🐛
 - fix: not responsive 🐛
