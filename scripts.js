@@ -1,37 +1,5 @@
-// DONE: ✔️ - WIP: 💬 - ERROR: ❌ - ON HOLD: 🔜 - BUG: 🐛
-// add listeners on buttons ✔️
-// create mock list in the background ✔️
-// append & reset elements via btns ✔️
-// "title" is text field, preselected on refresh ✔️
-// pressing "enter" auto-clicks btn1 & clears title + autofocus ✔️
-// pressing "shift + enter" logs "Extended functionalities to come" ✔️
-// title -> description -> enter; tabindex & custom content ✔️
-// create to array instead of list, just log ✔️
-// draw background from array, not list ✔️
-// draw whole background from array, not just append ✔️
-// shift + enter should hide the card ✔️
-// shift + enter should be enabled when there are 2+ elements, not before ✔️
-// shift + enter should be meaningfully styled ✔️
-// after the card is hidden, the software should automatically generate pairings ✔️
-// background elements should be drawn from array with objects 💬
-
-// new empty card should appear - call it comparison-card 🔜
-// comparison-card should show two columns & two buttons 🔜
-// the two columns should include title & description from selected comparison items 🔜
-// buttons should tell which one to promote 🔜
-// buttons should be triggered either by clicking or pressing the arrows 🔜
-// software should have a mode enum that limits keyboard interactivity 🔜
-// I should be able to enter extra items after the comparison has begun 🔜
-// new elements should be appendended in a new list, separate from comparisons 🔜
-// after all new elements are entered, software should shuffle & add them to brackets 🔜
-// card should animate when appearing & disappearing 🔜
-// how do we edit elements? 🔜
-// how do we empty the list, if the "shift+enter" won't be reset? 🔜
-
-// fix: empty title - tab to description - write - enter: no trigger 🐛
-// fix: not responsive 🐛
-
 const items = [];
+const comparisons = [];
 
 const itemCard = document.getElementById("add-item-card");
 const cardTitle = document.getElementById("card-title");
@@ -46,8 +14,14 @@ const keys = {};
 onkeydown = onkeyup = function (key) {
   keys[key.key] = key.type == "keydown";
 
+  // Add Item - Create & Add Another
   if (keys["Enter"] && !keys["Shift"]) appendItem();
-  if (keys["Enter"] && keys["Shift"] && !btn2.disabled) compareItems();
+
+  // Add Card - Create & Compare
+  if (keys["Enter"] && keys["Shift"] && !btn2.disabled) {
+    appendItem();
+    compareItems();
+  }
 };
 
 function btnClick() {
@@ -113,26 +87,37 @@ function hideCard() {
 }
 
 function generatePairings() {
-  bgList.innerHTML = "";
+  comparisons.splice(0, comparisons.length);
+
   const shuffledItems = knuthShuffle(items);
 
   while (shuffledItems.length > 0) {
-    let currentItem = shuffledItems.pop();
-    let currentString = `<li><strong>${currentItem.title}</strong>`;
+    let currentComparison = [];
 
-    if (currentItem.description)
-      currentString += ` (${currentItem.description})`;
+    let currentItem = shuffledItems.pop();
+    let firstItem = {
+      title: currentItem.title,
+      description: currentItem.description,
+      winner: null,
+    };
+
+    currentComparison.push(firstItem);
 
     if (shuffledItems.length > 0) {
       let nextItem = shuffledItems.pop();
-      currentString += ` vs. <strong>${nextItem.title}</strong>`;
+      let secondItem = {
+        title: nextItem.title,
+        description: nextItem.description,
+        winner: null,
+      };
 
-      if (nextItem.description) currentString += ` (${nextItem.description})`;
+      currentComparison.push(secondItem);
     }
 
-    currentString += "</li>";
-    bgList.innerHTML += currentString;
+    comparisons.push(currentComparison);
   }
+
+  drawComparisons();
 }
 
 function knuthShuffle(array) {
@@ -150,6 +135,27 @@ function knuthShuffle(array) {
   }
 
   return array;
+}
+
+function drawComparisons() {
+  bgList.innerHTML = "";
+
+  comparisons.forEach((pair) => {
+    let firstItem = pair[0];
+    let currentString = `<li><strong>${firstItem.title}</strong>`;
+
+    if (firstItem.description) currentString += ` (${firstItem.description})`;
+
+    if (pair[1]) {
+      let secondItem = pair[1];
+      currentString += ` vs. <strong>${secondItem.title}</strong>`;
+      if (secondItem.description)
+        currentString += ` (${secondItem.description})`;
+    }
+
+    currentString += "</li>";
+    bgList.innerHTML += currentString;
+  });
 }
 
 btn1.addEventListener("click", btnClick);
