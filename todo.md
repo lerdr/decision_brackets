@@ -27,20 +27,25 @@
 - buttons should be triggered either by clicking or pressing the arrows ✔️
 - when all comparisons are done, a new tier should be generated with survivors ✔️
 - when only one item remains, that item should be clearly denoted as winner ✔️
+- software should have a mode enum that limits keyboard interactivity ✔️
+- jquery bracket: init object and confirm basic functionality ✔️
 
 ## Doing
 
-- software should have a mode enum that limits keyboard interactivity 💬
+- jquery bracket: expand rounds dynamically depending on number of initial participants
 
 ## Up Next
 
-- refactor scripts.js, shorter files 🔜
+- jquery bracket: **expand as requirements become clear** 🔜
+- we've imported jquery for bracket lib. can I refactor to improve readability? 🔜
 - I should be able to enter extra items after the comparison has begun 🔜
 - new elements should be appendended in a new list, separate from comparisons 🔜
 - after all new elements are entered, software should shuffle & add them to brackets 🔜
 - card should animate when appearing & disappearing 🔜
 - how do we edit elements? 🔜
 - how do we empty the list, if the "shift+enter" won't be reset? 🔜
+- study jquery bracket to find out how they draw the lines, try it out 🔜
+- refactor scripts.js, shorter files 🔜
 
 ## Bugs
 

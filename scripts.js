@@ -84,7 +84,7 @@ function btnClick() {
   }
 }
 
-function appendItem() {
+export function appendItem() {
   const titleValue = addCardTitle.value.trim();
   const descriptionValue = addCardDescription.value.trim();
 
@@ -99,14 +99,6 @@ function appendItem() {
   drawList(titleValue, descriptionValue);
 }
 
-function resetItems() {
-  addCardTitle.value = "";
-  addCardDescription.value = "";
-  addCardTitle.focus();
-  bgList.innerHTML = "";
-  items.splice(0, items.length);
-}
-
 function drawList() {
   bgList.innerHTML = "";
 
@@ -117,6 +109,14 @@ function drawList() {
   items.forEach((item) => {
     bgList.innerHTML += `<li><strong>${item.title}</strong></li><br>${item.description}`;
   });
+}
+
+function resetItems() {
+  addCardTitle.value = "";
+  addCardDescription.value = "";
+  addCardTitle.focus();
+  bgList.innerHTML = "";
+  items.splice(0, items.length);
 }
 
 function compareItems() {
@@ -185,6 +185,8 @@ function knuthShuffle(array) {
 }
 
 function drawComparisons() {
+  drawBracket(comparisons);
+
   bgList.innerHTML = "";
 
   comparisons.forEach((pair) => {
@@ -268,6 +270,40 @@ function nextTier() {
     mode = "winner";
     bgList.innerHTML = `<li><strong>${nextTierItems[0].title}</strong><br />${nextTierItems[0].description}</li>`;
   }
+}
+
+function drawBracket(pairings) {
+  const teamsArray = [];
+
+  pairings.forEach((pairing) => {
+    teamsArray.push([
+      "team " + pairing[0].title,
+      pairing[1] ? "team " + pairing[1].title : "",
+    ]);
+  });
+
+  console.log(teamsArray);
+
+  const bracketData = {
+    teams: teamsArray,
+    results: [
+      // single elimination. test for 4 teams
+      [
+        // round 1
+        [1, 2],
+        [3, 4],
+      ],
+      [
+        // round 2
+        [5, 6],
+      ],
+    ],
+  };
+
+  $(function () {
+    $("#bg-bracket").bracket({ init: bracketData });
+  });
+  console.log(pairings);
 }
 
 init();
