@@ -30,16 +30,15 @@
 - software should have a mode enum that limits keyboard interactivity ✔️
 - jquery bracket: init object and confirm basic functionality ✔️
 - remove remnants of jquery bracket ✔️
+- sanitize html injection ✔️
+- descriptions: markdown to html? ✔️
 
 ## Doing
-
-- sanitize html injection 🐛
 
 ## Up Next
 
 - wasting time. review todo. perhaps features for v.2? 🔜
 - better style for background list 🔜
-- descriptions: markdown to html? 🔜
 - jquery bracket: expand rounds dynamically depending on number of initial participants 🔜
 - jquery bracket: **expand as requirements become clear** 🔜
 - we've imported jquery for bracket lib. can I refactor to improve readability? 🔜

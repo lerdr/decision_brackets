@@ -25,6 +25,8 @@ const btnPromoteRight = document.getElementById("btn-right");
 
 const bgList = document.getElementById("bg-list");
 
+const markdownConverter = new showdown.Converter();
+
 // Shortcuts by mode
 const keys = {};
 onkeydown = onkeyup = function (key) {
@@ -86,7 +88,7 @@ function btnClick() {
 
 export function appendItem() {
   const titleValue = sanitize(addCardTitle.value.trim());
-  const descriptionValue = sanitize(addCardDescription.value.trim());
+  const descriptionValue = markdown(sanitize(addCardDescription.value.trim()));
 
   if (titleValue === "") return;
 
@@ -276,6 +278,10 @@ function sanitize(string) {
     allowedAttributes: {},
     disallowedTagsMode: "escape",
   });
+}
+
+function markdown(string) {
+  return markdownConverter.makeHtml(string);
 }
 
 init();
