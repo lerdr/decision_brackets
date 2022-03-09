@@ -25,7 +25,7 @@ const btnPromoteRight = document.getElementById("btn-right");
 
 const bgList = document.getElementById("bg-list");
 
-// Shortcuts
+// Shortcuts by mode
 const keys = {};
 onkeydown = onkeyup = function (key) {
   keys[key.key] = key.type == "keydown";
@@ -85,8 +85,8 @@ function btnClick() {
 }
 
 export function appendItem() {
-  const titleValue = addCardTitle.value.trim();
-  const descriptionValue = addCardDescription.value.trim();
+  const titleValue = sanitize(addCardTitle.value.trim());
+  const descriptionValue = sanitize(addCardDescription.value.trim());
 
   if (titleValue === "") return;
 
@@ -185,8 +185,6 @@ function knuthShuffle(array) {
 }
 
 function drawComparisons() {
-  drawBracket(comparisons);
-
   bgList.innerHTML = "";
 
   comparisons.forEach((pair) => {
@@ -272,38 +270,12 @@ function nextTier() {
   }
 }
 
-function drawBracket(pairings) {
-  const teamsArray = [];
-
-  pairings.forEach((pairing) => {
-    teamsArray.push([
-      "team " + pairing[0].title,
-      pairing[1] ? "team " + pairing[1].title : "",
-    ]);
+function sanitize(string) {
+  return sanitizeHtml(string, {
+    allowedTags: [],
+    allowedAttributes: {},
+    disallowedTagsMode: "escape",
   });
-
-  console.log(teamsArray);
-
-  const bracketData = {
-    teams: teamsArray,
-    results: [
-      // single elimination. test for 4 teams
-      [
-        // round 1
-        [1, 2],
-        [3, 4],
-      ],
-      [
-        // round 2
-        [5, 6],
-      ],
-    ],
-  };
-
-  $(function () {
-    $("#bg-bracket").bracket({ init: bracketData });
-  });
-  console.log(pairings);
 }
 
 init();

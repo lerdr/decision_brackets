@@ -29,13 +29,18 @@
 - when only one item remains, that item should be clearly denoted as winner ✔️
 - software should have a mode enum that limits keyboard interactivity ✔️
 - jquery bracket: init object and confirm basic functionality ✔️
+- remove remnants of jquery bracket ✔️
 
 ## Doing
 
-- jquery bracket: expand rounds dynamically depending on number of initial participants
+- sanitize html injection 🐛
 
 ## Up Next
 
+- wasting time. review todo. perhaps features for v.2? 🔜
+- better style for background list 🔜
+- descriptions: markdown to html? 🔜
+- jquery bracket: expand rounds dynamically depending on number of initial participants 🔜
 - jquery bracket: **expand as requirements become clear** 🔜
 - we've imported jquery for bracket lib. can I refactor to improve readability? 🔜
 - I should be able to enter extra items after the comparison has begun 🔜
