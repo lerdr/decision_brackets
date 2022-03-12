@@ -170,17 +170,11 @@ function generatePairings(items) {
 }
 
 function knuthShuffle(array) {
-  let currentIndex = array.length;
-  let randomIndex;
+  for (let index = array.length - 1; index >= 0; index--) {
+    let randomIndex = Math.floor(Math.random() * index);
 
-  while (currentIndex != 0) {
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
-
-    [array[currentIndex], array[randomIndex]] = [
-      array[randomIndex],
-      array[currentIndex],
-    ];
+    // destructuring assignment
+    [array[index], array[randomIndex]] = [array[randomIndex], array[index]];
   }
 
   return array;
